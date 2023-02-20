@@ -5,9 +5,29 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cambio de divisa</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
   </head>
   <body>
-    <h1>Cambio de divisa</h1>
+    <div>
+      <h1 class="title">Cambio de divisa</h1>
+      <h3 class="subtitle">
+        Plataforma para que Daniel no tenga que pensar tantos
+      </h3>
+    </div>
+    <div>
+      <label for="cantidad">Cantidad en </label>
+      <select id="moneda">
+        <option value="MXN">MXN</option>
+        <option value="USD">USD</option>
+        <option value="EUR">EUR</option>
+      </select>
+      <input type="number" id="cantidad" />
+      <label for="moneda"> a COP</label>
+      <button id="convertir">Convertir</button>
+    </div>
+    <script src="cambioDivisa.js"></script>
   </body>
 </html>
