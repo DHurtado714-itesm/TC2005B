@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sobre mi | Daniel Hurtado</title>
+    <!-- <link rel="stylesheet" href="style.css" /> -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css"
+    />
+    <style></style>
+  </head>
+  <body>
+    <section>
+      <div>
+        <div>
+          <h1>Sobre mi | Daniel Hurtado</h1>
+        </div>
+        <div
+          style="display: flex; align-items: center; justify-content: center"
+        >
+          <img id="me-picture" src="me.jpg" />
+        </div>
+        <div>
+          <table style="width: 100%; text-align: left">
+            <tr>
+              <th>Nombre</th>
+              <th>Edad</th>
+              <th>Correo</th>
+            </tr>
+            <tr>
+              <td>Daniel Felipe Hurtado</td>
+              <td>21</td>
+              <td><a href="mailto: a01707774@tec.mx">Escribeme</a></td>
+            </tr>
+          </table>
+        </div>
+        <button class="button is-primary">Button</button>
+        <div class="columns">
+          <div class="column">1</div>
+          <div class="column">2</div>
+          <div class="column">3</div>
+          <div class="column">4</div>
+          <div class="column">5</div>
+        </div>
+        <button class="button is-loading">Loading button</button>
+        <hr />
+        <div>
+          <h2>Preguntas a responder</h2>
+          <h3>Lab 1</h3>
+          <div>
+            <details>
+              <summary>
+                <strong
+                  >¿Cuál es la diferencia entre Internet y la World Wide
+                  Web?</strong
+                >
+              </summary>
+              <p>
+                Internet es una red de redes que conecta a millones de
+                computadoras alrededor del mundo. La World Wide Web es un
+                servicio que se utiliza para acceder a la información que se
+                encuentra en Internet.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong>¿Cuáles son las partes de un URL?</strong>
+              </summary>
+              <p>
+                El URL está compuesto por tres partes: el protocolo, el nombre
+                del servidor y el nombre del recurso. El protocolo es el que
+                indica cómo se va a acceder al recurso. El nombre del servidor
+                es el nombre de la máquina que contiene el recurso. El nombre
+                del recurso es el nombre del archivo que contiene la información
+                que se quiere acceder.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong>
+                  ¿Cuál es el propósito de los métodos HTTP: GET, HEAD, POST,
+                  PUT, PATCH, DELETE?
+                </strong>
+              </summary>
+              <p>
+                GET: Solicita una representación de un recurso específico. Las
+                peticiones que usan el método GET sólo deben recuperar datos.
+                HEAD: Solicita una respuesta idéntica a la de una petición GET,
+                pero sin el cuerpo de la respuesta. POST: Envia una entidad al
+                recurso especificado, causando a menudo un cambio en el estado o
+                efectos secundarios en el servidor. PUT: Reemplaza todas las
+                representaciones actuales del recurso de destino con la carga
+                útil de la petición. PATCH: Es utilizado para aplicar
+                modificaciones parciales a un recurso. DELETE: Borra un recurso
+                en específico.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong>
+                  ¿Qué método HTTP se debe utilizar al enviar un formulario
+                  HTML, por ejemplo cuando ingresas tu usuario y contraseña en
+                  algún sitio? ¿Por qué?
+                </strong>
+              </summary>
+              <p>
+                El método POST se utiliza para enviar datos a un servidor para
+                crear o actualizar un recurso. El método GET se utiliza para
+                solicitar datos de un recurso específico.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong>
+                  ¿Qué método HTTP se utiliza cuando a través de un navegador
+                  web se accede a una página a través de un URL?
+                </strong>
+              </summary>
+              <p>
+                El método GET se utiliza para solicitar datos de un recurso
+                específico.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong>
+                  Un servidor web devuelve una respuesta HTTP con código 200.
+                  ¿Qué significa esto? ¿Ocurrió algún error?
+                </strong>
+              </summary>
+              <p>
+                El código 200 significa que la petición se ha completado con
+                éxito. No ocurrió ningún error.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong>
+                  ¿Es responsabilidad del desarrollador corregir un sitio web si
+                  un usuario reporta que intentó acceder al sitio y se encontró
+                  con un error 404? ¿Por qué?
+                </strong>
+              </summary>
+              <p>
+                No es responsabilidad del desarrollador corregir el error 404.
+                El error 404 significa que el servidor no pudo encontrar el
+                recurso que se solicitó.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong>
+                  ¿Es responsabilidad del desarrollador corregir un sitio web si
+                  un usuario reporta que intentó acceder al sitio y se encontró
+                  con un error 500? ¿Por qué?
+                </strong>
+              </summary>
+              <p>
+                Sí es responsabilidad del desarrollador corregir el error 500.
+                El error 500 significa que el servidor encontró una condición
+                inesperada que le impide cumplir con la petición.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong>
+                  ¿Qué significa que un atributo HTML5 esté depreciado o
+                  desaprobado (deprecated)? Menciona algunos elementos de HTML 4
+                  que en HTML5 estén desaprobados.
+                </strong>
+              </summary>
+              <p>
+                Significa que el atributo ya no se debe utilizar. Los elementos
+                de HTML 4 que en HTML5 están desaprobados son: font, center,
+                big, strike, tt, frame, frameset, noframes, applet, basefont,
+                dir, isindex, menu, s, u.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong
+                  >¿Cuáles son las diferencias principales entre HTML 4 y
+                  HTML5?</strong
+                >
+              </summary>
+              <p>
+                HTML5 es más semántico que HTML4. HTML5 es más fácil de usar que
+                HTML4. HTML5 es más compatible con dispositivos móviles que
+                HTML4. HTML5 es más compatible con CSS3 que HTML4. HTML5 es más
+                compatible con JavaScript que HTML4.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong
+                  >¿Qué componentes de estructura y estilo tiene una
+                  tabla?</strong
+                >
+              </summary>
+              <p>
+                Las tablas tienen componentes de estructura y estilo. Los
+                componentes de estructura son: table, tr, td, th, caption. Los
+                componentes de estilo son: col, colgroup, thead, tbody, tfoot.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong
+                  >¿Cuáles son los principales controles de una forma
+                  HTML5?</strong
+                >
+              </summary>
+              <p>
+                Los principales controles de una forma HTML5 son: input,
+                textarea, select, button, datalist, output, progress, meter.
+              </p>
+            </details>
+          </div>
+          <div>
+            <h3>Lab 3</h3>
+            <details>
+              <summary>
+                <strong>
+                  Como ingeniero de software ¿cuál es tu recomendación sobre el
+                  uso de !important en un CSS?</strong
+                >
+              </summary>
+              <p>
+                No se debe utilizar !important en un CSS. Si se utiliza
+                !important en un CSS, se está violando el principio de
+                especificidad de CSS. El uso de !important en un CSS puede
+                causar que el código CSS sea difícil de mantener.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong>
+                  Si se pone una imagen de fondo en una página HTML, ¿por qué
+                  debe escogerse con cuidado?</strong
+                >
+              </summary>
+              <p>
+                Se debe escoger con cuidado la imagen de fondo de una página
+                HTML porque si la imagen es muy grande, la página tardará más en
+                cargar. Si la imagen es muy pequeña, la imagen se verá pixelada.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong>
+                  Como ingeniero de software, ¿cuál es tu recomendación al
+                  elegir las unidades de un propiedad de estilo entre %, px y
+                  pt?</strong
+                >
+              </summary>
+              <p>
+                Se debe elegir las unidades de un propiedad de estilo entre %,
+                px y pt dependiendo del tamaño de la pantalla. Si el tamaño de
+                la pantalla es pequeño, se debe utilizar % o px. Si el tamaño de
+                la pantalla es grande, se debe utilizar pt.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <strong>
+                  ¿Por qué el uso de una versión minimizada del CSS mejora el
+                  rendimiento del sitio?</strong
+                >
+              </summary>
+              <p>
+                Elimina bytes innecesarios del CSS. Reduce el tiempo de carga de
+                la página y mejora el rendimiento del sitio.
+              </p>
+            </details>
+          </div>
+          <footer>
+            <img
+              id="logo"
+              src="Visual_Studio_Code_1.35_icon.svg.png"
+              alt="logo visual studio"
+            />
+            <p>Creado con Visual Studio Code.</p>
+          </footer>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
