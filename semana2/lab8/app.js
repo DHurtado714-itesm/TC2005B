@@ -20,3 +20,14 @@ for (let item of arreglo) {
     console.log(item);
   }, item);
 }
+
+// Modulo para crear servidores web
+
+const http = require("http");
+
+const server = http.createServer((request, response) => {
+  console.log(request.url);
+  // response.setHeader('Content')
+});
+
+server.listen(3000);
