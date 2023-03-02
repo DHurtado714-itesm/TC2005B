@@ -23,6 +23,8 @@ app.use("/hola", (request, response, next) => {
   response.send("Hola desde la ruta /hola");
 });
 
+const rutasChilaquiles = require("./routes/chilaquiles.routes");
+app.use("/chilaquiles", rutasChilaquiles);
 
 app.use((request, response, next) => {
   console.log("Middleware 3");
