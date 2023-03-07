@@ -13,6 +13,8 @@ exports.post_nuevo = (request, response, next) => {
 
   piloto.save();
 
+  response.setHeader("Set-Cookie", ["ultimoPiloto=" + piloto.nombre])
+
   response.redirect("/pilotos/");
 };
 
