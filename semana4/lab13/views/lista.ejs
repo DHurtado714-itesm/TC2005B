@@ -46,6 +46,11 @@
 </div>
 <% } else { %>
 <h1>No hay pilotos registradas</h1>
+<% } %> <% if (ultimoPiloto != '') { %>
+<div class="notification is-success">
+  El piloto <%= ultimoPiloto %> se ha registrado correctamente
+</div>
+
 <% } %>
 
 <a href="/pilotos/nuevo" class="button is-link is-rounded">Registrar piloto</a>

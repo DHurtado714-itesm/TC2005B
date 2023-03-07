@@ -1,4 +1,4 @@
-const Piloto = require("../models/pilotos.model");
+const Piloto = require("../models/pilotos.models");
 
 exports.get_nuevo = (request, response, next) => {
   response.render("nuevo");
@@ -13,14 +13,27 @@ exports.post_nuevo = (request, response, next) => {
 
   piloto.save();
 
-  response.setHeader("Set-Cookie", ["ultimoPiloto=" + piloto.nombre])
+  response.setHeader("Set-Cookie", [
+    "ultimoPiloto=" + piloto.nombre + "; HttpOnly",
+  ]);
+
+  request.session.ultimoPiloto = piloto.nombre;
 
   response.redirect("/pilotos/");
 };
 
 exports.listar = (request, response, next) => {
+  let cookies = request.get("Cookie") || "";
 
-  console.log(request.get("Cookie").split("=")[1]);
+  let consultas = cookies.split(";")[0].split("=")[1] || 0;
+  consultas++; // Rastrear el número de consultas que hace el usuario
 
-  response.render("lista", { pilotos: Piloto.fetchAll() });
+  response.setHeader("Set-Cookie", ["consultas=" + consultas + ";HttpOnly"]);
+
+  request.session.utlimoPiloto;
+
+  response.render("lista", {
+    pilotos: Piloto.fetchAll(),
+    ultimoPiloto: request.session.ultimoPiloto || "",
+  });
 };
