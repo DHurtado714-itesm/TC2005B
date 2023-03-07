@@ -1,0 +1,53 @@
+<%- include('includes/head.ejs') %>
+
+<h1 class="title">Pilotos registrados</h1>
+
+<a href="/pilotos/nuevo" class="button is-link is-rounded">Registrar piloto</a>
+
+<br /><br />
+
+<% if (pilotos.length > 0) { %>
+<div class="columns">
+  <% let columns = 0; %> <% for (let piloto of pilotos) { %> <% if (columns % 4
+  == 0) { %>
+</div>
+<div class="columns">
+  <% } %> <% columns++; %>
+  <div class="column">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <img src="<%= piloto.imagen %>" alt="Placeholder image" />
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-left">
+            <figure class="image is-48x48">
+              <img src="<%= piloto.imagen %>" alt="Placeholder image" />
+            </figure>
+          </div>
+          <div class="media-content">
+            <p class="title is-4"><%= piloto.piloto %></p>
+            <p class="subtitle is-6">@<%= piloto.nombre %></p>
+          </div>
+        </div>
+
+        <div class="content">
+          <%= piloto.escuderia %> <a><%= piloto.handle %></a>.
+          <a href="#">#css</a> <a href="#">#responsive</a>
+          <br />
+          <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+        </div>
+      </div>
+    </div>
+  </div>
+  <% } %>
+</div>
+<% } else { %>
+<h1>No hay pilotos registradas</h1>
+<% } %>
+
+<a href="/pilotos/nuevo" class="button is-link is-rounded">Registrar piloto</a>
+
+<%- include('includes/foot.ejs') %>
