@@ -19,5 +19,8 @@ exports.post_nuevo = (request, response, next) => {
 };
 
 exports.listar = (request, response, next) => {
+
+  console.log(request.get("Cookie").split("=")[1]);
+
   response.render("lista", { pilotos: Piloto.fetchAll() });
 };
