@@ -22,6 +22,7 @@ app.use("/hola", (request, response, next) => {
   response.send("Hola desde la ruta /hola");
 });
 
+
 app.use((request, response, next) => {
   console.log("Middleware 3");
   response.status(404).send("No se encontró la ruta");
