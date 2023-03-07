@@ -1,0 +1,17 @@
+1) SELECT Materiales.Descripcion
+FROM Materiales
+WHERE (((Materiales.Descripcion) Like "Tub*"));
+
+2) SELECT Materiales.Precio
+FROM Materiales
+WHERE (((Materiales.Precio)>300));
+
+3) SELECT Materiales.Clave, Materiales.Descripcion, Proveedores.[Razon social]
+FROM Materiales, Proveedores
+WHERE (((Materiales.Descripcion) Like "Ladrillos*"));
+
+4) SELECT Materiales.Descripcion, Proveedores.[Razon social], Proyectos.Demoninacion, Entregan.Fecha, Entregan.Cantidad, Materiales.Descripcion
+FROM Proyectos INNER JOIN (Proveedores INNER JOIN (Materiales INNER JOIN Entregan ON Materiales.Clave = Entregan.Clave) ON Proveedores.RFC = Entregan.RFC) ON Proyectos.Numero = Entregan.Numero
+WHERE (((Entregan.Fecha)>=#1/1/1998# And (Entregan.Fecha)<=#12/31/1998#) AND ((Materiales.Descripcion) Like "Pintura*"));
+
+
