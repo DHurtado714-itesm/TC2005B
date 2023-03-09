@@ -32,8 +32,16 @@ exports.listar = (request, response, next) => {
 
   request.session.utlimoPiloto;
 
-  response.render("lista", {
-    pilotos: Piloto.fetchAll(),
-    ultimoPiloto: request.session.ultimoPiloto || "",
-  });
+  Piloto.fetchAll()
+    .then(([rows, fieldData]) => {
+      console.log(rows);
+
+      response.render("lista", {
+        pilotos: rows,
+        ultimoPiloto: request.session.ultimoPiloto || "",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 };

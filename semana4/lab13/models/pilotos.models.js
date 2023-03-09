@@ -1,3 +1,5 @@
+const database = require("../util/database");
+
 const pilotos = [
   {
     nombre: "Lewis Hamilton",
@@ -18,8 +20,8 @@ const pilotos = [
     numero: "1",
     escuderia: "Red Bull",
     imagen:
-    "https://www.formula1.com/content/dam/fom-website/drivers/L/Hamilton/Lewis_Hamilton_2019/Profile%20Images/2019_Lewis_Hamilton_01.jpg.transform/2col-retina/image.jpg",
-  }
+      "https://www.formula1.com/content/dam/fom-website/drivers/L/Hamilton/Lewis_Hamilton_2019/Profile%20Images/2019_Lewis_Hamilton_01.jpg.transform/2col-retina/image.jpg",
+  },
 ];
 
 module.exports = class Piloto {
@@ -38,6 +40,6 @@ module.exports = class Piloto {
 
   //Este método servirá para devolver los objetos del almacenamiento persistente.
   static fetchAll() {
-    return pilotos;
+    return database.execute("SELECT * FROM pilotos");
   }
 };
