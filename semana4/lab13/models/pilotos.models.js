@@ -35,7 +35,10 @@ module.exports = class Piloto {
 
   //Este método servirá para guardar de manera persistente el nuevo objeto.
   save() {
-    pilotos.push(this);
+    return db.execute(`
+    INSERT INTO pilotos (nombre, numero, escuderia, imagen)
+    VALUES (?, ?, ?, ?)
+    `, [this.nombre, this.numero, this.escuderia, this.imagen]);
   }
 
   //Este método servirá para devolver los objetos del almacenamiento persistente.

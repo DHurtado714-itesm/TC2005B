@@ -11,7 +11,15 @@ exports.post_nuevo = (request, response, next) => {
     escuderia: request.body.escuderia,
   });
 
-  piloto.save();
+  piloto
+    .save()
+    .then(([rows, fieldData]) => {
+      request.session.ultimoPiloto = piloto.nombre;
+      response.redirect("/pilotos/");
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 
   response.setHeader("Set-Cookie", [
     "ultimoPiloto=" + piloto.nombre + "; HttpOnly",
