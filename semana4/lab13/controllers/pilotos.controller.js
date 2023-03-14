@@ -1,55 +1,69 @@
-const Piloto = require("../models/pilotos.models");
+const Piloto = require('../models/pilotos.model');
+const Escuderia = require('../models/escuderia.model');
 
 exports.get_nuevo = (request, response, next) => {
-  response.render("nuevo");
+
+    Raza.fetchAll()
+    .then(([rows, fieldData]) => {
+        response.render('nuevo', {
+            escuderia: rows,
+        });
+    }).catch(error => console.log(error));
+    
 };
 
 exports.post_nuevo = (request, response, next) => {
-  const piloto = new Piloto({
-    nombre: request.body.nombre,
-    numero: request.body.numero,
-    escuderia: request.body.escuderia,
-  });
 
-  piloto
-    .save()
-    .then(([rows, fieldData]) => {
-      request.session.ultimoPiloto = piloto.nombre;
-      response.redirect("/pilotos/");
-    })
-    .catch((error) => {
-      console.log(error);
+    const piloto = new Piloto({
+        nombre: request.body.nombre,
+        raza: request.body.raza,
+        descripcion: request.body.descripcion,
     });
 
-  response.setHeader("Set-Cookie", [
-    "ultimoPiloto=" + piloto.nombre + "; HttpOnly",
-  ]);
+    piloto.save()
+    .then(([rows, fieldData]) => {
 
-  request.session.ultimoPiloto = piloto.nombre;
+        request.session.mensaje = "El piloto fue registrado exitosamente.";
 
-  response.redirect("/pilotos/");
+        request.session.ultimo_piloto = piloto.nombre;
+
+        response.redirect('/pilotos/');
+    })
+    .catch((error) => {console.log(error)});
+
 };
 
 exports.listar = (request, response, next) => {
-  let cookies = request.get("Cookie") || "";
 
-  let consultas = cookies.split(";")[0].split("=")[1] || 0;
-  consultas++; // Rastrear el número de consultas que hace el usuario
+    //Crear variable para que si no hay cookie se cuente con un string para hacer el split
+    let cookies = request.get('Cookie') || '';
 
-  response.setHeader("Set-Cookie", ["consultas=" + consultas + ";HttpOnly"]);
+    let consultas = cookies.split(';')[0].split('=')[1] || 0;
 
-  request.session.utlimoPiloto;
+    consultas++;
 
-  Piloto.fetchAll()
+    response.setHeader('Set-Cookie', 'consultas=' + consultas + '; HttpOnly');
+
+    let mensaje = '';
+
+    if (request.session.mensaje) {
+        mensaje = request.session.mensaje;
+        request.session.mensaje = '';
+    }
+
+    Perro.fetch(request.params.id)
     .then(([rows, fieldData]) => {
-      console.log(rows);
-
-      response.render("lista", {
-        pilotos: rows,
-        ultimoPiloto: request.session.ultimoPiloto || "",
-      });
+        console.log(rows);
+        
+        response.render('lista', { 
+            escuderia: rows,
+            ultimo_piloto: request.session.ultimo_piloto || '', 
+            mensaje: mensaje,
+        });
     })
-    .catch((err) => {
-      console.log(err);
+    .catch(err => {
+        console.log(err);
     });
+
+    
 };

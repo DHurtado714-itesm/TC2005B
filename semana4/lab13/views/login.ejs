@@ -1,0 +1,17 @@
+<%- include('includes/head.ejs') %>
+
+<h1 class="title">Entrar</h1>
+
+<form action="/usuarios/login" method="POST">
+
+    <label for="username">Username:</label>
+    <input name="username" id="username" class="input is-rounded" type="text" placeholder="danielitopillo">
+    <br><br>
+    <label for="password">Contraseña:</label>
+    <input name="password" id="password" class="input is-rounded" type="password">
+    <br><br>
+    <input class="button is-rounded is-success" type="submit" value="Entrar">
+
+</form>
+
+<%- include('includes/foot.ejs') %>
