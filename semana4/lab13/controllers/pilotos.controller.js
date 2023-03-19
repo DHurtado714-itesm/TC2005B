@@ -61,6 +61,7 @@ exports.listar = (request, response, next) => {
         mensaje: mensaje,
         isLoggedIn: request.session.isLoggedIn || false,
         nombre: request.session.nombre || "",
+        privilegios: request.session.privilegios || [],
       });
     })
     .catch((err) => {

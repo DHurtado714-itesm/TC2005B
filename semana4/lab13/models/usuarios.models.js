@@ -32,4 +32,13 @@ module.exports = class Usuario {
       WHERE username = ?`, 
       [username]);
   }
+
+  static fetchPrivilegios(username) {
+    return db.execute(
+      `SELECT p.nombre 
+      FROM privilegio p, usuario u, usuario_privilegio up
+      WHERE up.idUsuario = u.id AND up.idPrivilegio = p.id AND u.username = ?`,
+      [username]
+    );
+  }
 };
