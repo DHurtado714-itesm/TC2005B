@@ -7,6 +7,8 @@ router.get('/nuevo', pilotosController.get_nuevo);
 
 router.post('/nuevo', pilotosController.post_nuevo);
 
+router.get('/:id', pilotosController.listar);
+
 router.get('/', pilotosController.listar);
 
 module.exports = router;

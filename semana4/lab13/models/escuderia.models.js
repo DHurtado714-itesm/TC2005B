@@ -1,18 +1,14 @@
-const db = require('../util/database');
+const db = require("../util/database");
 
 module.exports = class Raza {
-  constructor(){
+  constructor() {}
 
-  }
+  save() {}
 
-  save(){
-  
-  }
-
-  static fetchAll(){
+  static fetchAll() {
     return db.execute(`
       SELECT id, nombre
-      FROM Piltosa
-    `)
+      FROM escuderias
+    `);
   }
-}
+};

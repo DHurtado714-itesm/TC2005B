@@ -2,8 +2,9 @@
 
 <h1 class="title">Pilotos registrados</h1>
 
-<a href="/pilotos/nuevo" class="button is-link is-rounded">Registrar piloto</a>
-
+<% if (privilegios.indexOf('crear_piloto') >= 0) { %>
+  <a href="/pilotos/nuevo" class="button is-link is-rounded">Registrar piloto</a>
+<% } %>
 <br /><br />
 
 <% if (pilotos.length > 0) { %>

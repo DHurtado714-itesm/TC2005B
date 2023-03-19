@@ -1,4 +1,5 @@
 const db = require("../util/database");
+const bycrypt = require("bcryptjs");
 
 module.exports = class Usuario {
   constructor(nuevo_usuario) {
@@ -8,12 +9,27 @@ module.exports = class Usuario {
   }
 
   save() {
-    return db.execute(
-      `
+    return bycrypt
+      .hash(this.password, 12)
+      .then((password_cifrado) => {
+        return db.execute(
+          `
       INSERT INTO usuario(nombre, username, password)
       values(?, ?, ?)
     `,
-      [this.nombre, this.username, this.password]
-    );
+          [this.nombre, this.username, password_cifrado]
+        );
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  static fetchOne(username) {
+    return db.execute(
+      `SELECT * 
+      FROM usuario 
+      WHERE username = ?`, 
+      [username]);
   }
 };
