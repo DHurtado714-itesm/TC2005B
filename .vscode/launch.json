@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "g:/My Drive/Tec/FJ23/TC2005B",
-      "program": "g:/My Drive/Tec/FJ23/TC2005B/build/Debug/outDebug",
+      "cwd": "c:/Users/danie/Documents/TC2005B",
+      "program": "c:/Users/danie/Documents/TC2005B/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
