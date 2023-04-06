@@ -1,0 +1,28 @@
+{
+  "name": "lab13",
+  "version": "1.0.0",
+  "description": "Ejercicio en clase",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/DHurtado714-itesm/TC2005B.git"
+  },
+  "keywords": [
+    "lab11"
+  ],
+  "author": "Daniel Hurtado",
+  "license": "ISC",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "csurf": "^1.11.0",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2"
+  }
+}

@@ -1,0 +1,21 @@
+<%- include('includes/head.ejs') %>
+
+<h1 class="title">Registrar nuevo piloto</h1>
+
+<form action="/pilotos/nuevo" method="POST">
+    <input type="hidden" name="_csrf" value="<%=csrfToken%>">
+    <label for="nombre">Nombre:</label>
+    <input required name="nombre" id="nombre" class="input is-rounded" type="text" placeholder="Stig">
+    <br><br>
+    <label for="numero">Numero:</label>
+    <input name="numero" id="numero" class="input is-rounded" type="text" placeholder="Stig">
+    <br><br>
+    <label for="escuderia">Escuderia:</label>
+    <div class = "select is-primary"></div>
+    <input name="escuderia" id="escuderia" class="input is-rounded" type="text" placeholder="Stig">
+    <br><br>
+    <input class="button is-rounded is-success" type="submit" value="Registrar">
+
+</form>
+
+<%- include('includes/foot.ejs') %>
