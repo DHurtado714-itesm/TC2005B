@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.1.2
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 19-03-2023 a las 03:22:42
--- Versión del servidor: 10.4.25-MariaDB
--- Versión de PHP: 8.1.10
+-- Host: localhost:3306
+-- Generation Time: Apr 09, 2023 at 06:37 PM
+-- Server version: 5.7.24
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `pilotos`
+-- Database: `pilotos`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `escuderia`
+-- Table structure for table `escuderia`
 --
 
 CREATE TABLE `escuderia` (
@@ -32,11 +32,11 @@ CREATE TABLE `escuderia` (
   `nombre` text COLLATE utf8mb4_spanish2_ci NOT NULL,
   `jefe` text COLLATE utf8mb4_spanish2_ci NOT NULL,
   `duenio` text COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `escuderia`
+-- Dumping data for table `escuderia`
 --
 
 INSERT INTO `escuderia` (`id`, `nombre`, `jefe`, `duenio`, `created_at`) VALUES
@@ -46,17 +46,17 @@ INSERT INTO `escuderia` (`id`, `nombre`, `jefe`, `duenio`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `parrilla`
+-- Table structure for table `parrilla`
 --
 
 CREATE TABLE `parrilla` (
   `idPiloto` int(11) NOT NULL,
   `idEscuderia` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `parrilla`
+-- Dumping data for table `parrilla`
 --
 
 INSERT INTO `parrilla` (`idPiloto`, `idEscuderia`, `created_at`) VALUES
@@ -68,7 +68,7 @@ INSERT INTO `parrilla` (`idPiloto`, `idEscuderia`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `pilotos`
+-- Table structure for table `pilotos`
 --
 
 CREATE TABLE `pilotos` (
@@ -76,11 +76,11 @@ CREATE TABLE `pilotos` (
   `nombre` varchar(80) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `numero` int(4) NOT NULL,
   `imagen` varchar(200) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `pilotos`
+-- Dumping data for table `pilotos`
 --
 
 INSERT INTO `pilotos` (`id`, `nombre`, `numero`, `imagen`, `created_at`) VALUES
@@ -90,38 +90,38 @@ INSERT INTO `pilotos` (`id`, `nombre`, `numero`, `imagen`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `privilegios`
+-- Table structure for table `privilegios`
 --
 
 CREATE TABLE `privilegios` (
   `id` int(11) NOT NULL,
   `nombre` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `created_at` date NOT NULL DEFAULT current_timestamp()
+  `createdAt` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `privilegios`
+-- Dumping data for table `privilegios`
 --
 
-INSERT INTO `privilegios` (`id`, `nombre`, `created_at`) VALUES
-(1, 'ver_piloto', '2023-03-14'),
-(2, 'crear_piloto', '2023-03-14');
+INSERT INTO `privilegios` (`id`, `nombre`, `createdAt`) VALUES
+(1, 'ver_piloto', '2023-04-09 18:36:17'),
+(2, 'crear_piloto', '2023-04-09 18:36:17');
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `roles`
+-- Table structure for table `roles`
 --
 
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
   `nombre` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `descripcion` varchar(400) COLLATE utf8mb4_spanish2_ci DEFAULT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `roles`
+-- Dumping data for table `roles`
 --
 
 INSERT INTO `roles` (`id`, `nombre`, `descripcion`, `created_at`) VALUES
@@ -131,17 +131,17 @@ INSERT INTO `roles` (`id`, `nombre`, `descripcion`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `rol_privilegio`
+-- Table structure for table `rol_privilegio`
 --
 
 CREATE TABLE `rol_privilegio` (
   `idRol` int(11) NOT NULL,
   `idPrivilegio` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `rol_privilegio`
+-- Dumping data for table `rol_privilegio`
 --
 
 INSERT INTO `rol_privilegio` (`idRol`, `idPrivilegio`, `created_at`) VALUES
@@ -152,7 +152,7 @@ INSERT INTO `rol_privilegio` (`idRol`, `idPrivilegio`, `created_at`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuarios`
 --
 
 CREATE TABLE `usuarios` (
@@ -160,11 +160,11 @@ CREATE TABLE `usuarios` (
   `nombre` varchar(400) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `username` varchar(40) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `password` varchar(400) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuarios`
 --
 
 INSERT INTO `usuarios` (`id`, `nombre`, `username`, `password`, `created_at`) VALUES
@@ -175,17 +175,17 @@ INSERT INTO `usuarios` (`id`, `nombre`, `username`, `password`, `created_at`) VA
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuario_rol`
+-- Table structure for table `usuario_rol`
 --
 
 CREATE TABLE `usuario_rol` (
   `idUsuario` int(11) NOT NULL,
   `idRol` int(11) NOT NULL,
-  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+  `created_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
--- Volcado de datos para la tabla `usuario_rol`
+-- Dumping data for table `usuario_rol`
 --
 
 INSERT INTO `usuario_rol` (`idUsuario`, `idRol`, `created_at`) VALUES
@@ -193,115 +193,115 @@ INSERT INTO `usuario_rol` (`idUsuario`, `idRol`, `created_at`) VALUES
 (3, 1, '2023-03-14 22:30:00');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `escuderia`
+-- Indexes for table `escuderia`
 --
 ALTER TABLE `escuderia`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `parrilla`
+-- Indexes for table `parrilla`
 --
 ALTER TABLE `parrilla`
   ADD KEY `idPiloto` (`idPiloto`),
   ADD KEY `idEscuderia` (`idEscuderia`);
 
 --
--- Indices de la tabla `pilotos`
+-- Indexes for table `pilotos`
 --
 ALTER TABLE `pilotos`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `privilegios`
+-- Indexes for table `privilegios`
 --
 ALTER TABLE `privilegios`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `roles`
+-- Indexes for table `roles`
 --
 ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indices de la tabla `rol_privilegio`
+-- Indexes for table `rol_privilegio`
 --
 ALTER TABLE `rol_privilegio`
   ADD PRIMARY KEY (`idRol`,`idPrivilegio`),
   ADD KEY `idPrivilegio` (`idPrivilegio`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuarios`
 --
 ALTER TABLE `usuarios`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`);
 
 --
--- Indices de la tabla `usuario_rol`
+-- Indexes for table `usuario_rol`
 --
 ALTER TABLE `usuario_rol`
   ADD PRIMARY KEY (`idUsuario`,`idRol`),
   ADD KEY `idRol` (`idRol`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `escuderia`
+-- AUTO_INCREMENT for table `escuderia`
 --
 ALTER TABLE `escuderia`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de la tabla `pilotos`
+-- AUTO_INCREMENT for table `pilotos`
 --
 ALTER TABLE `pilotos`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
--- AUTO_INCREMENT de la tabla `privilegios`
+-- AUTO_INCREMENT for table `privilegios`
 --
 ALTER TABLE `privilegios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `roles`
+-- AUTO_INCREMENT for table `roles`
 --
 ALTER TABLE `roles`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuarios`
 --
 ALTER TABLE `usuarios`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Restricciones para tablas volcadas
+-- Constraints for dumped tables
 --
 
 --
--- Filtros para la tabla `parrilla`
+-- Constraints for table `parrilla`
 --
 ALTER TABLE `parrilla`
   ADD CONSTRAINT `parrilla_ibfk_1` FOREIGN KEY (`idPiloto`) REFERENCES `pilotos` (`id`),
   ADD CONSTRAINT `parrilla_ibfk_2` FOREIGN KEY (`idEscuderia`) REFERENCES `escuderia` (`id`);
 
 --
--- Filtros para la tabla `rol_privilegio`
+-- Constraints for table `rol_privilegio`
 --
 ALTER TABLE `rol_privilegio`
   ADD CONSTRAINT `rol_privilegio_ibfk_1` FOREIGN KEY (`idRol`) REFERENCES `roles` (`id`),
   ADD CONSTRAINT `rol_privilegio_ibfk_2` FOREIGN KEY (`idPrivilegio`) REFERENCES `privilegios` (`id`);
 
 --
--- Filtros para la tabla `usuario_rol`
+-- Constraints for table `usuario_rol`
 --
 ALTER TABLE `usuario_rol`
   ADD CONSTRAINT `usuario_rol_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`),
