@@ -11,19 +11,20 @@ module.exports = class Piloto {
 
   //Este método servirá para guardar de manera persistente el nuevo objeto.
   save() {
-    return db.execute(
+    return database.execute(
+      // Falta incluir imagen
       `
-    INSERT INTO pilotos (nombre, numero, escuderia, imagen)
-    VALUES (?, ?, ?, ?)
+    INSERT INTO pilotos (nombre, numero, imagen)
+    VALUES (?, ?)
     `,
-      [this.nombre, this.numero, this.escuderia, this.imagen]
+      [this.nombre, this.numero, this.imagen]
     );
   }
 
   static fetchAll() {
     return database.execute(
-      `SELECT p.id, p.nombre, p.numero, p.escuderia, p.imagen, e.nombre
-      FROM pilotos p, escuderias e, parrila pa
+      `SELECT p.id, p.nombre, p.numero, p.imagen, e.nombre as escuderia
+      FROM pilotos p, escuderias e, parrilla pa
       WHERE pa.idPiloto = p.id AND pa.idEscuderia = e.id`
     );
   }
@@ -32,7 +33,7 @@ module.exports = class Piloto {
   static fetchOne(id) {
     return database.execute(
       `SELECT p.id, p.nombre, p.numero, p.imagen, e.nombre
-      FROM pilotos p, escuderias e, parrila pa
+      FROM pilotos p, escuderias e, parrilla pa
       WHERE pa.idPiloto = p.id AND pa.idEscuderia = e.id AND p.id = ?`,
       [id]
     );
@@ -40,9 +41,9 @@ module.exports = class Piloto {
 
   static fetch(id) {
     if (id) {
-      return Perro.fetchOne(id);
+      return Piloto.fetchOne(id);
     } else {
-      return Perro.fetchAll();
+      return Piloto.fetchAll();
     }
   }
 };

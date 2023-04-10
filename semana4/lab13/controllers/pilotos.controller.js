@@ -2,7 +2,7 @@ const Piloto = require("../models/pilotos.model");
 const Escuderia = require("../models/escuderia.model");
 
 exports.get_nuevo = (request, response, next) => {
-  Raza.fetchAll()
+  Escuderia.fetchAll()
     .then(([rows, fieldData]) => {
       response.render("nuevo", {
         escuderia: rows,
@@ -51,13 +51,13 @@ exports.listar = (request, response, next) => {
     request.session.mensaje = "";
   }
 
-  Perro.fetch(request.params.id)
+  Piloto.fetch(request.params.id)
     .then(([rows, fieldData]) => {
       console.log(rows);
 
       response.render("lista", {
-        escuderia: rows,
-        ultimo_piloto: request.session.ultimo_piloto || "",
+        pilotos: rows,
+        ultimoPiloto: request.session.ultimo_piloto || "",
         mensaje: mensaje,
         isLoggedIn: request.session.isLoggedIn || false,
         nombre: request.session.nombre || "",

@@ -1,6 +1,6 @@
 const db = require("../util/database");
 
-module.exports = class Raza {
+module.exports = class Escuderia {
   constructor() {}
 
   save() {}

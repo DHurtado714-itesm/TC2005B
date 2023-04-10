@@ -7,7 +7,12 @@ const csrfProtection = csrf();
 
 const app = express();
 
-app.use(csrfProtection);
+app.use(express.static(path.join(__dirname, "public")));
+
+app.use(bodyParser.urlencoded({ extended: false }));
+app.set("view engine", "ejs");
+
+app.set("views", "views");
 app.use(
   session({
     secret: "Messi el mejor de la historia",
@@ -17,12 +22,11 @@ app.use(
   })
 );
 
-app.use(express.static(path.join(__dirname, "public")));
-
-app.use(bodyParser.urlencoded({ extended: false }));
-
-app.set("view engine", "ejs");
-app.set("views", "views");
+app.use(csrfProtection);
+app.use((request, response, next) => {
+  response.locals.csrfToken = request.csrfToken();
+  next();
+});
 
 const rutasUsuarios = require("./routes/usuarios.routes");
 app.use("/usuarios", rutasUsuarios);
