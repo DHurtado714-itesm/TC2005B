@@ -11,6 +11,8 @@ router.post("/nuevo", pilotosController.post_nuevo);
 
 router.get("/:id", pilotosController.listar);
 
+router.get('/buscar/:valor_busqueda', pilotosController.buscar);
+
 router.get("/", pilotosController.listar);
 
 module.exports = router;

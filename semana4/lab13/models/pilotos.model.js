@@ -39,6 +39,16 @@ module.exports = class Piloto {
     );
   }
 
+  static find(valor_busqueda) {
+    return database.execute(
+      `SELECT p.id, p.nombre, p.numero, p.imagen, e.nombre as escuderia
+      FROM pilotos p, escuderias e, parrilla pa
+      WHERE pa.idPiloto = p.id AND pa.idEscuderia = e.id AND (p.nombre LIKE ? OR p.numero LIKE ? OR e.nombre LIKE ? )
+      ORDER BY p.nombre ASC`,
+      ['%' + valor_busqueda + '%', '%' + valor_busqueda + '%', '%' + valor_busqueda + '%']
+    );
+  }
+
   static fetch(id) {
     if (id) {
       return Piloto.fetchOne(id);

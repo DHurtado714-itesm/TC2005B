@@ -1,6 +1,17 @@
 const Piloto = require("../models/pilotos.model");
 const Escuderia = require("../models/escuderia.model");
 
+exports.get_buscar = (request, response, next) => {
+  Piloto.find(reques.body.valor_busqueda)
+    .then(([rows, fieldData]) => {
+      response.status(200).json({ pilotos: rows });
+    })
+    .catch((error) => {
+      console.log(error);
+      response.stauts(500).json({ message: "Internal Server Error" });
+    });
+};
+
 exports.get_nuevo = (request, response, next) => {
   Escuderia.fetchAll()
     .then(([rows, fieldData]) => {

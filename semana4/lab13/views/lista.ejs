@@ -3,7 +3,7 @@
 <h1 class="title">Pilotos registrados</h1>
 
 <% if (privilegios.indexOf('crear_piloto') >= 0) { %>
-  <a href="/pilotos/nuevo" class="button is-link is-rounded">Registrar piloto</a>
+<a href="/pilotos/nuevo" class="button is-link is-rounded">Registrar piloto</a>
 <% } %>
 <br /><br />
 
@@ -57,3 +57,72 @@
 <a href="/pilotos/nuevo" class="button is-link is-rounded">Registrar piloto</a>
 
 <%- include('includes/foot.ejs') %>
+
+<script>
+  document.getElementById("buscar").onkeyup = () => {
+    const valor_busqueda = document.getElementById("buscar").value;
+    console.log(valor_busqueda);
+
+    fetch("/pilotos/buscar/" + valor_busqueda, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((result) => {
+        return result.json();
+      })
+      .then((data) => {
+        console.log(data.pilotos);
+        let respuesta = "";
+        if (data.pilotos.lenght > 0) {
+          respuesta += '<div class="columns">';
+          let columns = 0;
+          for (let piloto of data.piloto) {
+            if (columns % 4 == 0) {
+              respuesta += "</div>";
+              respuesta += '<div class="columns">';
+            }
+            columns++;
+            respuesta += '<div class="column">';
+            respuesta += '<div class="card">';
+            respuesta += '<div class="card-image">';
+            respuesta += '<figure class="image is-4by3">';
+            respuesta +=
+              '<img src="/uploads/' +
+              piloto.imagen +
+              '" alt="Placeholder image" />'; // cambiar piloto por escuderia
+            respuesta += "</figure>";
+            respuesta += "</div>";
+            respuesta += '<div class="media-content">';
+            respuesta += '<p class="title is-4">' + piloto.piloto + "</p>"; // cambiar piloto por escuderia
+            respuesta += '<p class="subtitle is-6">@' + piloto.nombre + "</p>"; // cambiar piloto por escuderia
+            respuesta += "</div>";
+            respuesta += "</div>";
+
+            respuesta += '<div class="content">';
+            respuesta += piloto.escuderia + " <a>" + piloto.handle + "</a>.";
+            respuesta += '<a href="#">#css</a> <a href="#">#responsive</a>';
+            respuesta += "<br />";
+            respuesta +=
+              '<time datetime="' +
+              piloto.created_at +
+              '">' +
+              piloto.created_at +
+              "</time>";
+            respuesta += "</div>";
+            respuesta += "</div>";
+            respuesta += "</div>";
+            respuesta += "</div>";
+          }
+          respuesta += "</div>";
+        } else {
+          respuesta += "<h1>No hay pilotos registradas</h1>";
+        }
+        document.getElementById("resultados").innerHTML = respuesta;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+</script>
